@@ -1,0 +1,74 @@
+{{define "content"}}
+
+<body style="height: 100%; width: 100%">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Golang HTML Rendering</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container-fluid w-100 h-100 main_container">
+        <div class="row w-100 h-100">
+            <div class="col-12 col-lg-6 px-2">
+                <img src="./images/Portoroz1.jpg" class="rounded" id="home_image" alt="image of portoroz">
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="row mb-lg-4">
+                    <div class="col-12 pt-3">
+                        <h2 id="home_title">O meni</h2>
+                    </div>
+                </div>
+                <div class="row h-50">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lectus tortor, condimentum a dignissim in, condimentum at nisl. Integer a nunc sit amet tellus facilisis imperdiet non vel elit. Integer venenatis ligula sed ipsum tristique, sed interdum diam pharetra. Curabitur sed interdum mauris. Phasellus gravida suscipit magna, eget porta nibh posuere eget. Vivamus fringilla dui arcu, ut hendrerit libero placerat sit amet. Pellentesque mauris dolor, malesuada eu purus non, consequat egestas lectus. Donec posuere pharetra blandit. Vestibulum consequat consectetur elementum. Nunc facilisis elementum elit vitae pellentesque. Donec sit amet orci tortor. Nunc facilisis pharetra enim et tincidunt. Cras mollis tortor vestibulum purus venenatis pharetra. Aenean ex felis, placerat mollis quam sed, scelerisque pharetra velit. Sed ut lacus sit amet risus blandit imperdiet at sed arcu.
+                    </p>
+                </div>
+                <div class="row w-100" id='contact_data'>
+                    <div class='col-12 d-flex ps-4'>
+                        <h4>Kontaktiraj me: </h4>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12 col-lg-6 text-muted d-flex justify-content-center">
+                        ak7246@studenti.uni-lj.si
+                    </div>
+                    <div class="col-12 col-lg-6 text-muted d-flex justify-content-center">
+                        +38669784563
+                    </div>
+                </div>
+                <div class="row w-100 mt-4">
+                    <div class="col-4 col-lg-2 offset-lg-3 h-100 d-flex justify-content-center">
+                        <a href="#" class="floating_button">
+                          <i class="fa-brands fa-facebook-f float_icon"></i>
+                        </a>
+                    </div>       
+                    <div class="col-4 col-lg-2  h-100 d-flex justify-content-center">
+                        <a href="#" class="floating_button">
+                          <i class="fa-brands fa-instagram float_icon"></i>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-2  h-100 d-flex justify-content-center">
+                        <a href="#" class="floating_button">
+                            <i class="fa-brands fa-twitter float_icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{end}}
+</body>
