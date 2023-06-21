@@ -1,0 +1,31 @@
+
+message Person {
+    required string FirstName = 1;
+    required string LastName = 2;
+    optional int32 Age = 3;
+    repeated string Email = 4;
+}
+
+message CreatePersonResponse {
+    required int64 id = 1;
+}
+
+message UpdatePersonsResponse {
+    required int64 id = 1;
+}
+
+message ListPersonsRequest {
+    required int64 cursor = 1;
+}
+
+service PersonService {
+    // Unary
+    rpc CreatePerson (Person) returns (CreatePersonResponse);
+    // Server-side streaming
+    rpc ListPersons (ListPersonsRequest) returns (stream Person);
+    // Client-side streaming
+    rpc BulkUpdatePersons (stream Person) returns (UpdatePersonsResponse);
+    // Bidirectional streaming
+    rpc BulkCreatePersons (stream Person) returns (stream CreatePersonResponse);
+}
+
