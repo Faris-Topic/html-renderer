@@ -1,0 +1,17 @@
+
+syntax = "proto3";
+
+package example.html_renderer.proto;
+
+option go_package = "github.com/Faris-Topic/html-renderer/grpc/proto";
+
+message HTMLResponse {
+    bytes htmlFile = 1;
+}
+
+message EmptyRequest {}
+
+service HTMLRenderer {
+
+    rpc GetHomePage(EmptyRequest) returns (HTMLResponse) {}
+}
