@@ -1,0 +1,68 @@
+{{define "content"}}
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id='navbar'>
+        <div class="container-fluid">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
+                <li class="nav-item navigation">
+                    <a class="nav-link links" href="/">Home</a>
+                </li>
+                <li class="nav-item navigation">
+                    <a class="nav-link active links" aria-current="page" href="/new-post">New Post</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid w-100 h-100 main_container">
+        <div class="row w-100 h-100">
+            <div class="col-12 col-lg-8 offset-md-2 h-75">
+                <div class="card m-3 h-100">
+                    <div class="row g-0 h-100">
+                      <div class="col-12">
+                        <div class="card-body h-100 p-5">
+                            <form method="POST" action="/new-post">
+                                <div class='row w-100'>
+                                    <div class='col-12 '>
+                                        <h2>New Post</h2>
+                                    </div>
+                                </div>
+                                <div class='row w-100 mt-4'>
+                                    <div class='col-12 col-lg-3'>
+                                        <h5>Title: </h5>
+                                    </div>
+                                    <div class='col-12 col-lg-9'>
+                                        <input id='post_title' name='post_title' type='text' class='w-100'>
+                                    </div>
+                                </div>
+                                <div class='row w-100 mt-4'>
+                                    <div class='col-12'>
+                                        <h5>Body: </h5>
+                                    </div>
+                                    <div class='col-12'>
+                                        <textarea id='post_body' name='post_body' style="resize: none;" rows="14" class='w-100 hide_scroll'> </textarea>
+                                    </div>
+                                </div>
+                                <div class='row w-100 mt-4'>
+                                    <div class='col-6 col-lg-3 offset-md-6  d-flex align-items-end'>
+                                        <button type="submit" class="btn btn-success w-100 ">Post</button>
+                                    </div>
+                                    <div class='col-6 col-lg-3 d-flex align-items-end'>
+                                         <button type="reset" class="btn btn-danger w-100">Canel</button>
+                                    </div>
+                               </div>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{{end}}
