@@ -9,10 +9,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
                 <li class="nav-item navigation">
-                    <a class="nav-link links" href="/">Home</a>
+                    <h2>Forum Example</h2>
                 </li>
                 <li class="nav-item navigation">
-                    <a class="nav-link active links" aria-current="page" href="/new-post">New Post</a>
+                    <div class="nav-link links" id="homeLink" >Home</div>
+                </li>
+                <li class="nav-item navigation">
+                    <div class="nav-link active links" aria-current="page" id="newPostLink">New Post</div>
                 </li>
             </ul>
           </div>
@@ -26,7 +29,7 @@
                     <div class="row g-0 h-100">
                       <div class="col-12">
                         <div class="card-body h-100 p-5">
-                            <form method="POST" action="/new-post">
+                            <form method="POST" id="new-post-form" action="">
                                 <div class='row w-100'>
                                     <div class='col-12 '>
                                         <h2>New Post</h2>
@@ -50,7 +53,7 @@
                                 </div>
                                 <div class='row w-100 mt-4'>
                                     <div class='col-6 col-lg-3 offset-md-6  d-flex align-items-end'>
-                                        <button type="submit" class="btn btn-success w-100 ">Post</button>
+                                        <button type="submit" id="new-post-btn" class="btn btn-success w-100 ">Post</button>
                                     </div>
                                     <div class='col-6 col-lg-3 d-flex align-items-end'>
                                          <button type="reset" class="btn btn-danger w-100">Canel</button>

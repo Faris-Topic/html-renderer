@@ -9,10 +9,13 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
                 <li class="nav-item navigation">
-                    <a class="nav-link active links" aria-current="page" href="/">Home</a>
+                    <h2>Forum Example</h2>
                 </li>
                 <li class="nav-item navigation">
-                    <a class="nav-link links" href="/new-post">New Post</a>
+                    <div class="nav-link active links" aria-current="page" id="homeLink" >Home</div>
+                </li>
+                <li class="nav-item navigation">
+                    <div class="nav-link links" id="newPostLink">New Post</div>
                 </li>
             </ul>
           </div>
@@ -25,11 +28,9 @@
                 <div class="row h-100" >
                     <div class="containter h-100 hide_scroll" style="overflow-y: scroll; position: relative">
                         {{range .Posts}}
-                            <div class="card m-2" id="{{.Id}}">
+                            <div class="card m-2 post-list" id="{{.Id}}">
                                 <div class="card-body">
-                                    <a href="/post-details/{{.Id}}"  style="color: inherit; text-decoration: none;">
-                                        <h4 class="card-title">{{.Title}}</h4>
-                                    </a>
+                                   <h4 class="card-title">{{.Title}}</h4>
                                 </div>
                             </div>
                         {{end}}
