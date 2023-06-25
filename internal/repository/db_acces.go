@@ -38,7 +38,7 @@ func (fc *ForumClient) Disconnect() {
 	fc.client.Disconnect(context.Background())
 }
 
-func (fc *ForumClient) InsertPost(post CreatePost) (string, error) {
+func (fc *ForumClient) InsertPost(post *CreatePost) (string, error) {
 
 	result, err := fc.collection.InsertOne(context.TODO(), post)
 	// check for errors in the insertion

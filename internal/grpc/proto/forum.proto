@@ -1,0 +1,28 @@
+
+syntax = "proto3";
+
+package example.forum_rendering.proto;
+
+option go_package = "github.com/Faris-Topic/html-renderer/grpc/proto";
+
+message HTMLResponse {
+    bytes htmlFile = 1;
+}
+
+message CreatePostRequest {
+    string title = 1;
+    string body = 2;
+}
+
+message GetPostRequest {
+    string id = 1;
+}
+
+message EmptyRequest {}
+
+service ForumRenderer {
+    rpc GetHomePage(EmptyRequest) returns (HTMLResponse) {}
+    rpc GetNewPostPage(EmptyRequest) returns (HTMLResponse) {}
+    rpc CreateNewPost(CreatePostRequest) returns (HTMLResponse) {}
+    rpc GetPost(GetPostRequest) returns (HTMLResponse) {}
+}

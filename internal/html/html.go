@@ -34,7 +34,7 @@ func NewPost(w io.Writer, p NewPostDetails) error {
 	return newPost.Execute(w, p)
 }
 
-func ShowPost(w io.Writer, p repository.PostDetails) error {
+func ShowPostDetails(w io.Writer, p repository.PostDetails) error {
 	return postDetails.Execute(w, p)
 }
 

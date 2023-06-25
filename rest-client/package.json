@@ -1,0 +1,13 @@
+{
+    "name": "forum-renderer-example",
+    "main": "client.js",
+    "devDependencies": {
+        "async": "~3.2.3",
+        "lodash": "~4.17.0",
+        "webpack": "~5.82.1",
+        "webpack-cli": "~5.1.1"
+    },
+    "dependencies": {
+        "axios": "^1.4.0"
+    }
+}
