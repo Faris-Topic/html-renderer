@@ -71,7 +71,6 @@ func main() {
 }
 
 func (s *ForumServer) GetHomePage(ctx context.Context, req *forum_proto.EmptyRequest) (*forum_proto.HTMLResponse, error) {
-	fmt.Println("GetHomePage called ")
 	posts, err := s.dbClient.ListAllPosts()
 	if err != nil {
 		return nil, err
@@ -82,15 +81,15 @@ func (s *ForumServer) GetHomePage(ctx context.Context, req *forum_proto.EmptyReq
 
 }
 
-func (s *ForumServer) GetNewPostPage(ctx context.Context, req *forum_proto.EmptyRequest) (*forum_proto.HTMLResponse, error) {
-	fmt.Println("GetNewPostPage called ")
+func (s *ForumServer) GetNewPostPage(
+	ctx context.Context, 
+	req *forum_proto.EmptyRequest)	(*forum_proto.HTMLResponse, error) {
 	buffer := new(bytes.Buffer)
 	err := html.NewPost(buffer, html.NewPostDetails{})
 	return &forum_proto.HTMLResponse{HtmlFile: buffer.Bytes()}, err
 }
 
 func (s *ForumServer) CreateNewPost(ctx context.Context, req *forum_proto.CreatePostRequest) (*forum_proto.HTMLResponse, error) {
-	fmt.Println("CreateNewPost called ")
 	createPost := repository.CreatePostFromProto(req)
 	postId, err := s.dbClient.InsertPost(createPost)
 	if err != nil {
@@ -107,7 +106,6 @@ func (s *ForumServer) CreateNewPost(ctx context.Context, req *forum_proto.Create
 }
 
 func (s *ForumServer) GetPost(ctx context.Context, req *forum_proto.GetPostRequest) (*forum_proto.HTMLResponse, error) {
-	fmt.Println("GetPost called ")
 	id := req.Id
 	post, err := s.dbClient.GetPostById(id)
 	if err != nil {

@@ -34,7 +34,7 @@ func main() {
 	}
 	server.registerRequestsHandler()
 
-	err = http.ListenAndServe(":3000", server.router)
+	err = http.ListenAndServe(":8080", server.router)
 	log.Fatal(err)
 }
 
@@ -53,7 +53,7 @@ func (s *RESTServer) registerRequestsHandler() {
 func setHeaders(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS'")
-	(*w).Header().Set("Access-Control-Allow-Headers", "Origin, Content-Type")
+	(*w).Header().Set("Access-Control-Allow-Headers", "*")
 }
 
 func (s *RESTServer) homePageHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -87,8 +87,14 @@ func (s *RESTServer) postNewPostHandler(w http.ResponseWriter, r *http.Request, 
 		return
 	}
 
+	postDetails, err := s.dbClient.GetPostById(newId)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
 	setHeaders(&w)
-	http.Redirect(w, r, "/post-details/"+newId, http.StatusSeeOther)
+	html.ShowPostDetails(w, postDetails)
 }
 
 func (s *RESTServer) postDetailsHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
