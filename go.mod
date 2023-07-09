@@ -9,7 +9,6 @@ require (
 	google.golang.org/grpc/examples v0.0.0-20230622212526-f24b4c7ee600
 	google.golang.org/protobuf v1.30.0
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
-	grpc.go4.org v0.0.0-20170609214715-11d0a25b4919
 )
 
 require (

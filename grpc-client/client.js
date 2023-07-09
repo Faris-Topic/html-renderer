@@ -16,16 +16,25 @@ function renderResponse(message) {
 }
 
 function homePage() {
+    const start = Date.now();
+    console.log("Start time of call 'getHomePage': " + start);
     forumService.getHomePage(new EmptyRequest(), {}, (err, response) => {
         if (err != null) {
             console.log(err);
         }
+        const end = Date.now();
+        console.log("End time of call 'getHomePage': " + end);
+        
         message = response.getHtmlfile_asB64();
         renderResponse(message);
+        console.log("Difference: " + (end - start));
     });
 }
 
 function getPostDetails(postId) {
+    const start = Date.now();
+    console.log("Start time of call 'getPost': " + start);
+
     getPostRequest = new GetPostRequest();
     getPostRequest.setId(postId);
 
@@ -33,12 +42,61 @@ function getPostDetails(postId) {
         if (err != null) {
             console.log(err);
         }
+
+        const end = Date.now();
+        console.log("End time of call 'getPost': " + end);
+
         message = response.getHtmlfile_asB64();
         renderResponse(message);
+
+        console.log("Difference: " + (end - start));
+    });
+}
+
+function getNewPostForm() {
+    const start = Date.now();
+    console.log("Start time of call 'getNewPostPage': " + start);
+
+    forumService.getNewPostPage(new EmptyRequest(), {}, (err, response) => {
+        if (err != null) {
+            console.log(err);
+        }
+        const end = Date.now();
+        console.log("End time of call 'getNewPostPage': " + end);
+
+        message = response.getHtmlfile_asB64();
+        renderResponse(message);
+        console.log("Difference: " + (end - start));
+    });
+}
+
+function createNewPost(form) {
+    const start = Date.now();
+    console.log("Start time of call 'createNewPost': " + start);
+
+    const formData = new FormData(form);
+    const title = formData.get("post_title");
+    const body = formData.get("post_body");
+
+    newPostRequest = new CreatePostRequest();
+    newPostRequest.setTitle(title);
+    newPostRequest.setBody(body);
+
+    forumService.createNewPost(newPostRequest, {}, (err, response) => {
+        if (err != null) {
+            console.log(err);
+        }
+        const end = Date.now();
+        console.log("End time of call 'createNewPost': " + end);
+
+        message = response.getHtmlfile_asB64();
+        renderResponse(message);
+        console.log("Difference: " + (end - start));
     });
 }
 
 window.onload = function () {
+    console.log("Window loaded");
     homePage();
 };
 
@@ -65,22 +123,7 @@ function registerListeners() {
     if (form != null) {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
-
-            const formData = new FormData(form);
-            const title = formData.get("post_title");
-            const body = formData.get("post_body");
-
-            newPostRequest = new CreatePostRequest();
-            newPostRequest.setTitle(title);
-            newPostRequest.setBody(body);
-
-            forumService.createNewPost(newPostRequest, {}, (err, response) => {
-                if (err != null) {
-                    console.log(err);
-                }
-                message = response.getHtmlfile_asB64();
-                renderResponse(message);
-            });
+            createNewPost(form);
         });
     }
 
@@ -88,13 +131,7 @@ function registerListeners() {
     if (newPostLink != null) {
         newPostLink.addEventListener("click", (e) => {
             e.preventDefault();
-            forumService.getNewPostPage(new EmptyRequest(), {}, (err, response) => {
-                if (err != null) {
-                    console.log(err);
-                }
-                message = response.getHtmlfile_asB64();
-                renderResponse(message);
-            });
+            getNewPostForm();
         });
     }
 };
